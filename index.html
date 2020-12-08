@@ -38,6 +38,7 @@
                     if (httpRequest.readystate === XMLHttpRequest.DONE) {
                         //check for successful 200 response
                         if (httpRequest.status === 200) {
+                            alert('This worked the right way!');
                             document.write(httpRequest.responseText);
                         } else {
                             alert('There was a problem with the request.');
