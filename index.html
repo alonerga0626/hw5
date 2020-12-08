@@ -18,6 +18,7 @@
                 //Event Handler
                 (function() {
                     var httpRequest;
+                    document.getElementByID("button").onclick = alert('Hey Amanda');
                     document.getElementById("button").onclick = function() { makeRequest('dailey_degrees.json');
                     };
                 //Create an XMLHttpRequest object
@@ -32,7 +33,6 @@
                     //Send the request to the server
                     httpRequest.open('GET',url);
                     httpRequest.send();
-                    alert('Testing');
                 }
                 //check for state of request. if done, I received full response from the server.
                 function alertContents() {
