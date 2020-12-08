@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>Homework 5</title>
+            <style>
+                button {
+                    font-family: 'Helvetica';
+                    font-size: 1.5em;
+                    color:white;
+                    border-radius: 4px;
+                    background: black;
+                }
+            </style>
+        </head>
+        <body>
+            <button id="button">Click me!</button>
+            <script>
+                //Event Handler
+                (function() {
+                    var httpRequest;
+                    document.getElementById("button").onclick = function() { makeRequest('https://alonerga0626.github.io/hw5/dailey_degrees.json');
+                    };
+                //Create an XMLHttpRequest object
+                function makeRequest(url) {
+                    httpRequest = new XMLHttpRequest();
+                    if (!httpRequest) {
+                        alert('Exiting: Cannot create an XMLHTTP instance.');
+                        return false;
+                    }
+                    //handle the server response, call alertContents when the state of the request changes
+                    httpRequest.onreadystatechange = alertContents;
+                    //Send the request to the server
+                    httpRequest.open('GET',url);
+                    httpRequest.send();
+                    alert("you got this far");
+                }
+                //check for state of request. if done, I received full response from the server.
+                function alertContents() {
+                    if (httpRequest.readystate === XMLHttpRequest.DONE) {
+                        //check for successful 200 response
+                        if (httpRequest.status === 200) {
+                            alert("you got this far");
+                            //document.write(httpRequest.responseText);
+                        } else {
+                            alert('There was a problem with the request.');
+                        }
+                    } else {
+                        alert("This is where it's going wrong");
+                    }
+                }
+                }
+                )();
+            </script>
+        </body>
+    </html>
