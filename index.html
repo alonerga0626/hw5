@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>Homework 5</title>
+            <style>
+                button {
+                    font-family: 'Helvetica';
+                    font-size: 1.5em;
+                    color:white;
+                    border-radius: 4px;
+                    background: black;
+                }
+            </style>
+        </head>
+        <body>
+            <button id="button">Click me!</button>
+            <script>
+                //Event Handler
+                (function() {
+                    var httpRequest;
+                    document.getElementById("button").onclick = function() { makeRequest('dailey_degrees.json');
+                    };
+                //Create an XMLHttpRequest object
+                function makeRequest(url) {
+                    httpRequest = new XMLHttpRequest();
+                    if (!httpRequest) {
+                        alert('Exiting: Cannot create an XMLHTTP instance.');
+                        return false;
+                    }
+                    //handle the server response, call alertContents when the state of the request changes
+                    httpRequest.onreadystatechange = alertContents;
+                    //Send the request to the server
+                    httpRequest.open('GET',url);
+                    httpRequest.send();
+                }
+                //check for state of request. if done, I received full response from the server.
+                function alertContents() {
+                    if (httpRequest.readystate === XMLHttpRequest.DONE) {
+                        //check for successful 200 response
+                        if (httpRequest.status === 200) {
+                            document.write(httpRequest.responseText);
+                        } else {
+                            alert('There was a problem with the request.');
+                        }
+                    } 
+                }
+                function () {
+                    var dailey_results = JSON.parse(httpRequest.responseText);
+                }
+                }
+                );
+                )();
+            </script>
+            <!--The table would work somewhat like this below:-->
+            <!--<table>
+            <tr>
+                <th></th>
+                <th scope="col">School</th>
+                <th scope="col">Major</th>
+                <th scope="col">Type</th>
+                <th scope="col">YearConferred</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td>dailey_results.dailey_degrees[0].school</td>
+                <td>dailey_results.dailey_degrees[0].major</td>
+                <td>dailey_results.dailey_degrees[0].type</td>
+                <td>dailey_results.dailey_degrees[0].year_conferred</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>dailey_results.dailey_degrees[1].school</td>
+                <td>dailey_results.dailey_degrees[1].major</td>
+                <td>dailey_results.dailey_degrees[1].type</td>
+                <td>dailey_results.dailey_degrees[1].year_conferred</td>
+            </tr>
+        </table>-->
+        </body>
+    </html>
