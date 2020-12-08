@@ -1,0 +1,19 @@
+{"dailey_degrees": [
+    {
+        "degree": {
+            "school":"texas a&m university",
+            "major":"applied mathematics",
+            "type":"BS",
+            "year_conferred":2010
+        }
+    },
+    {
+        "degree": {
+            "school":"boston university",
+            "major":"computer information systems",
+            "type":"MS",
+            "year_conferred":2021
+        }
+    }
+]
+}
